@@ -1,10 +1,11 @@
 <script>
-	import Button from "@smui/button";
-	import LayoutGrid, { Cell } from "@smui/layout-grid";
-	import TopAppBar, { Row, Section, Title } from "@smui/top-app-bar";
+	// import Button from "@smui/button";
+	// import LayoutGrid, { Cell } from "@smui/layout-grid";
+	// import TopAppBar, { Row, Section, Title } from "@smui/top-app-bar";
 	export let name;
 
 	import Line from "svelte-chartjs/src/Line.svelte";
+	import { MaterialApp, Button, Alert,AppBar } from "svelte-materialify";
 
 	let dataLine = {
 		labels: [
@@ -63,42 +64,30 @@
 	};
 </script>
 
-<TopAppBar variant="static" color={"surface"}>
-	<Row>
-		<Section>menu</Section>
-	</Row>
-</TopAppBar>
-<main>
-	<LayoutGrid>
-		<Cell span={6}>
-			Hello {name}!
-		</Cell>
-		<Cell span={6}>
-			<Button>大家好2</Button>
-		</Cell>
-		<Cell span={12}>
-			<p>
-				Visit the <a href="https://svelte.dev/tutorial"
-					>Svelte tutorial</a
-				> to learn how to build Svelte apps.
-			</p>
-		</Cell>
-		<Cell span={12}>
-			<Line
-				data={dataLine}
-				options={{
-					responsive: true,
-					plugins: {
-						legend: {
-							position: "top",
-						},
-						title: {
-							display: true,
-							text: "測試圖表",
-						},
-					},
-				}}
-			/>
-		</Cell>
-	</LayoutGrid>
-</main>
+<MaterialApp theme="light">
+	<AppBar>
+		Hello {name}! Visit the
+	</AppBar>
+	
+	<Button class="red">hello</Button>
+	<Alert class="success-color">
+		<a href="https://svelte.dev/tutorial">Svelte tutorial</a>
+		to learn how to build Svelte apps.
+	</Alert>
+
+	<Line
+		data={dataLine}
+		options={{
+			responsive: true,
+			plugins: {
+				legend: {
+					position: "top",
+				},
+				title: {
+					display: true,
+					text: "測試圖表",
+				},
+			},
+		}}
+	/>
+</MaterialApp>
