@@ -1,12 +1,104 @@
 <script>
-	import Button from '@smui/button'
+	import Button from "@smui/button";
+	import LayoutGrid, { Cell } from "@smui/layout-grid";
+	import TopAppBar, { Row, Section, Title } from "@smui/top-app-bar";
 	export let name;
+
+	import Line from "svelte-chartjs/src/Line.svelte";
+
+	let dataLine = {
+		labels: [
+			"January",
+			"February",
+			"March",
+			"April",
+			"May",
+			"June",
+			"July",
+		],
+		datasets: [
+			{
+				label: "My First dataset",
+				fill: true,
+				lineTension: 0.3,
+				backgroundColor: "rgba(225, 204,230, .3)",
+				borderColor: "rgb(205, 130, 158)",
+				borderCapStyle: "butt",
+				borderDash: [],
+				borderDashOffset: 0.0,
+				borderJoinStyle: "miter",
+				pointBorderColor: "rgb(205, 130,1 58)",
+				pointBackgroundColor: "rgb(255, 255, 255)",
+				pointBorderWidth: 10,
+				pointHoverRadius: 5,
+				pointHoverBackgroundColor: "rgb(0, 0, 0)",
+				pointHoverBorderColor: "rgba(220, 220, 220,1)",
+				pointHoverBorderWidth: 2,
+				pointRadius: 1,
+				pointHitRadius: 10,
+				data: [65, 59, 80, 81, 56, 55, 40],
+			},
+			{
+				label: "My Second dataset",
+				fill: true,
+				lineTension: 0.3,
+				backgroundColor: "rgba(184, 185, 210, .3)",
+				borderColor: "rgb(35, 26, 136)",
+				borderCapStyle: "butt",
+				borderDash: [],
+				borderDashOffset: 0.0,
+				borderJoinStyle: "miter",
+				pointBorderColor: "rgb(35, 26, 136)",
+				pointBackgroundColor: "rgb(255, 255, 255)",
+				pointBorderWidth: 10,
+				pointHoverRadius: 5,
+				pointHoverBackgroundColor: "rgb(0, 0, 0)",
+				pointHoverBorderColor: "rgba(220, 220, 220, 1)",
+				pointHoverBorderWidth: 2,
+				pointRadius: 1,
+				pointHitRadius: 10,
+				data: [28, 48, 40, 19, 86, 27, 90],
+			},
+		],
+	};
 </script>
 
+<TopAppBar variant="static" color={"surface"}>
+	<Row>
+		<Section>menu</Section>
+	</Row>
+</TopAppBar>
 <main>
-	<h1>Hello {name}!</h1>
-	<Button>
-		大家好2
-	</Button>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	<LayoutGrid>
+		<Cell span={6}>
+			Hello {name}!
+		</Cell>
+		<Cell span={6}>
+			<Button>大家好2</Button>
+		</Cell>
+		<Cell span={12}>
+			<p>
+				Visit the <a href="https://svelte.dev/tutorial"
+					>Svelte tutorial</a
+				> to learn how to build Svelte apps.
+			</p>
+		</Cell>
+		<Cell span={12}>
+			<Line
+				data={dataLine}
+				options={{
+					responsive: true,
+					plugins: {
+						legend: {
+							position: "top",
+						},
+						title: {
+							display: true,
+							text: "測試圖表",
+						},
+					},
+				}}
+			/>
+		</Cell>
+	</LayoutGrid>
 </main>
