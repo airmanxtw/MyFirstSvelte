@@ -63,7 +63,7 @@
 		],
 	};
 </script>
-
+{@debug name }
 <MaterialApp theme="light">
 	<AppBar>
 		Hello {name}! Visit the
