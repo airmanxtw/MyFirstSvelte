@@ -5,7 +5,8 @@
 	export let name;
 
 	import Line from "svelte-chartjs/src/Line.svelte";
-	import { MaterialApp, Button, Alert,AppBar } from "svelte-materialify";
+	import { MaterialApp, Button, Alert, AppBar } from "svelte-materialify";
+	import BodyContent from "./components/BodyContent.svelte";
 
 	let dataLine = {
 		labels: [
@@ -63,12 +64,18 @@
 		],
 	};
 </script>
-{@debug name }
+
+{@debug name}
 <MaterialApp theme="light">
 	<AppBar>
 		Hello {name}! Visit the
 	</AppBar>
-	
+	<BodyContent>
+		<svelte:fragment slot="footer">
+			<p>All rights reserved.</p>
+			<p>Copyright (c) 2019 Svelte Industries</p>
+		</svelte:fragment>
+	</BodyContent>
 	<Button class="red">hello</Button>
 	<Alert class="success-color">
 		<a href="https://svelte.dev/tutorial">Svelte tutorial</a>
